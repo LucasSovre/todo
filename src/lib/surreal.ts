@@ -7,6 +7,39 @@ export interface surrealConfig {
     scope : string;
 }
 
+export async function surreaQL(query:string,config:surrealConfig) {
+    const token = cookies().get("token")
+    if(token){
+        const response = await fetch(
+            `${config.url}/sql`,
+            {
+                method: "POST",
+                headers:{
+                    "Content-Type" : "text/plain",
+                    "Accept" : "application/json",
+                    "NS" : config.namespace,
+                    "DB":config.database,
+                    "Authorization" : `Bearer ${token.value}`
+                },
+                body: query
+            }
+        )
+        if(response.status === 401){
+            console.log("A bad token as been submited", token.value)
+            throw new Error("Not authenticated")
+        }
+        if(response.status === 200){
+            console.log("error on transaction",response.status)
+            throw new Error("Error on request with database")
+        }
+        const data = await response.json();
+        return data;
+    }else{
+        throw new Error("Token is missing")
+    }
+    
+}
+
 export async function surrealSignup(email:string,password:string,fisrtName:string,lastName:string,config:surrealConfig) {
     const response = await fetch(
         `${config.url}/signup`,
