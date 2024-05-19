@@ -1,0 +1,26 @@
+meta {
+  name: signin
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/signin
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "email":"user1@gmail.com",
+    "pass":"Password",
+    "ns":"test",
+    "db":"test",
+    "sc":"account"
+  }
+}

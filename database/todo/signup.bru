@@ -1,0 +1,28 @@
+meta {
+  name: signup
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000/signup
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email":"user2@gmail.com",
+    "pass":"Password",
+    "firstName":"Jessie",
+    "lastName":"Clarck",
+    "ns":"test",
+    "db":"test",
+    "sc":"account"
+  }
+}

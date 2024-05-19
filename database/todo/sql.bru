@@ -1,0 +1,22 @@
+meta {
+  name: sql
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8000/sql
+  body: text
+  auth: none
+}
+
+headers {
+  Accept: application/json
+  ns: test
+  db: test
+  Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MTYxMTU2MTEsIm5iZiI6MTcxNjExNTYxMSwiZXhwIjoxNzE2MjAyMDExLCJpc3MiOiJTdXJyZWFsREIiLCJqdGkiOiI1ZDRlOTNmMi0xM2MyLTQ0M2YtOWMxMi0xMzRmZjNkN2JmMWEiLCJOUyI6InRlc3QiLCJEQiI6InRlc3QiLCJTQyI6ImFjY291bnQiLCJJRCI6InVzZXI6NnkxMnFmeDBkd21qdHpzbWZnOGoifQ.K20PXIsNLmesm_ZJtfh_RK6N1mhU-xFLQWcp2zsPaRrmIUwDZ8L7A4VmSs59mDVE2Iy4YgCneW6_i8dC07ENRw
+}
+
+body:text {
+  SELECT * FROM user;
+}
