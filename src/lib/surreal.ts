@@ -29,11 +29,9 @@ export async function surreaQL(query:string,config:surrealConfig) {
             throw new Error("Not authenticated")
         }
         if(response.status === 200){
-            console.log("error on transaction",response.status)
-            throw new Error("Error on request with database")
+            return response
         }
-        const data = await response.json();
-        return data;
+        throw new Error("error")
     }else{
         throw new Error("Token is missing")
     }
