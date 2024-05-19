@@ -14,7 +14,7 @@ export default function Page(){
     if(response.status === 200){
       redirect("/private")
     }else{
-      console.log("error")
+      redirect("/?error=Invalid email or password")
     }
   }
 
