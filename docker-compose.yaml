@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    environment:
+      - SURREAL_HOST=http://surrealdb:8000
+      - SURREAL_SCOPE=account
+      - SURREAL_DB=prod
+      - SURREAL_NS=prod
+    ports:
+      - 8081:3000
+
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    command: start --log trace --user root --pass root --auth file:/mydata/mydatabase.db
+    volumes:
+      - ./data:/mydata
+    ports:
+      - 8001:8000
