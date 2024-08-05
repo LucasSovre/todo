@@ -29,7 +29,8 @@ export async function surreaQL(query:string,config:surrealConfig) {
             throw new Error("Not authenticated")
         }
         if(response.status === 200){
-            return response
+            const data = await response.json();
+            return data;
         }
         throw new Error("error")
     }else{

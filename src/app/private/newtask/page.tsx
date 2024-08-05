@@ -14,14 +14,13 @@ export default function Page(){
         CREATE task CONTENT {
             name : "${name}",
             description : "${description}",
-            status : "${status}"
+            state : "${status}"
         };`
         const response = await surreaQL(sql,conf)
-        if(response.status === 200){
-            const a = await response.json();
-            //redirect("/private")
+        if(response[0].status === "OK"){
+            redirect("/private")
         }else{
-            //redirect("/private/newtask?error=error")
+            redirect("/private/newtask?error=error")
         }
     }
 
